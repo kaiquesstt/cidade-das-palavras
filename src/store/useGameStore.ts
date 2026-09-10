@@ -60,9 +60,9 @@ export const useGameStore = create<GameState>()(
   persist(
     (set, get) => ({
       playerName: "Explorador(a)",
-      xp: 220,
-      level: 3,
-      achievements: ["Primeira pista", "Leitor atento", "Investigador"],
+      xp: 0,
+      level: 1,
+      achievements: [],
       activeView: "home",
       selectedDistrict: null,
       progress: initialProgress,
@@ -99,49 +99,78 @@ export const useGameStore = create<GameState>()(
           ...current,
           [district]: { ...current[district], [stage]: true }
         };
-        const stageOrder: MasteryStage[] = ["recognize", "explain", "apply", "produce"];
+
+        const stageOrder: MasteryStage[] = [
+          "recognize",
+          "explain",
+          "apply",
+          "produce"
+        ];
         const count = stageOrder.filter((item) => updated[district][item]).length;
 
         set((state) => {
+          const nextProgress = {
+            ...state.progress,
+            [district]: count * 25
+          };
+
           const rawXP = state.xp + 25;
           const leveledUp = rawXP >= 400;
+          const nextAchievements = [...state.achievements];
+
+          const unlock = (name: string) => {
+            if (!nextAchievements.includes(name)) {
+              nextAchievements.push(name);
+            }
+          };
+
+          if (stage === "recognize") unlock("Primeira pista");
+          if (stage === "explain") unlock("Leitor atento");
+
+          const startedDistricts = Object.values(nextProgress).filter(
+            (value) => value > 0
+          ).length;
+          if (startedDistricts >= 2) unlock("Investigador");
+
           return {
             mastery: updated,
-            progress: { ...state.progress, [district]: count * 25 },
+            progress: nextProgress,
+            achievements: nextAchievements,
             xp: leveledUp ? rawXP - 400 : rawXP,
             level: leveledUp ? state.level + 1 : state.level,
-            recentlyRestored: count === 4 ? district : state.recentlyRestored
+            recentlyRestored:
+              count === 4 ? district : state.recentlyRestored
           };
         });
       },
 
-addAchievement: (achievement) =>
-  set((state) => ({
-    achievements: state.achievements.includes(achievement)
-      ? state.achievements
-      : [...state.achievements, achievement]
-  })),
+      addAchievement: (achievement) =>
+        set((state) => ({
+          achievements: state.achievements.includes(achievement)
+            ? state.achievements
+            : [...state.achievements, achievement]
+        })),
 
-resetDemo: () =>
-        set({
+      resetDemo: () =>
+        set((state) => ({
           playerName: "Explorador(a)",
-          xp: 220,
-          level: 3,
-          achievements: ["Primeira pista", "Leitor atento", "Investigador"],
+          xp: 0,
+          level: 1,
+          achievements: [],
           activeView: "home",
           selectedDistrict: null,
           progress: initialProgress,
           mastery: initialMastery,
-          reducedMotion: false,
-          soundEnabled: true,
-          fontScale: 1,
-          highContrast: false,
+          reducedMotion: state.reducedMotion,
+          soundEnabled: state.soundEnabled,
+          fontScale: state.fontScale,
+          highContrast: state.highContrast,
           recentlyRestored: null
-        })
+        }))
     }),
     {
       name: "cidade-das-palavras-v9",
-      version: 15,
+      version: 16,
       migrate: (persistedState: unknown, version) => {
         const state = persistedState as Partial<GameState>;
         const progress = {
@@ -185,6 +214,27 @@ resetDemo: () =>
           mastery.figuras = initialMastery.figuras;
         }
 
+
+        // V16 transforma o protótipo em versão de aplicação.
+        // Se o navegador ainda tiver exatamente o estado inicial de
+        // demonstração (sem nenhuma habilidade concluída), remove XP,
+        // nível e selos fictícios. Progresso real é preservado.
+        const noRealMastery = Object.values(mastery).every((districtStages) =>
+          Object.values(districtStages).every((done) => !done)
+        );
+
+        const hadDemoIdentity =
+          version < 16 &&
+          noRealMastery &&
+          state.xp === 220 &&
+          state.level === 3;
+
+        const normalizedXP = hadDemoIdentity ? 0 : (state.xp ?? 0);
+        const normalizedLevel = hadDemoIdentity ? 1 : (state.level ?? 1);
+        const normalizedAchievements = hadDemoIdentity
+          ? []
+          : (state.achievements ?? []);
+
         const clearRestored =
           (version < 10 && state.recentlyRestored === "lenda") ||
           (version < 11 && state.recentlyRestored === "estatuto") ||
@@ -195,6 +245,9 @@ resetDemo: () =>
 
         return {
           ...state,
+          xp: normalizedXP,
+          level: normalizedLevel,
+          achievements: normalizedAchievements,
           progress,
           mastery,
           recentlyRestored: clearRestored

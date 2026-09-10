@@ -1,5 +1,5 @@
 
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import cityMap from "../assets/city-map.webp";
 import { districts } from "../data/districts";
@@ -7,6 +7,7 @@ import { useGameStore } from "../store/useGameStore";
 
 export function CityMap() {
   const root = useRef<HTMLDivElement>(null);
+  const [showLabels, setShowLabels] = useState(false);
   const selected = useGameStore((s) => s.selectedDistrict);
   const selectDistrict = useGameStore((s) => s.selectDistrict);
   const progress = useGameStore((s) => s.progress);
@@ -42,8 +43,17 @@ export function CityMap() {
   }, [reducedMotion]);
 
   return (
-    <div className="map-stage" ref={root}>
+    <div className={`map-stage ${showLabels ? "show-labels" : ""}`} ref={root}>
       <img className="map-art" src={cityMap} alt="" />
+      <button
+        type="button"
+        className="map-label-toggle"
+        aria-pressed={showLabels}
+        onClick={() => setShowLabels((value) => !value)}
+      >
+        <span aria-hidden="true">Aa</span>
+        {showLabels ? "Ocultar nomes" : "Mostrar nomes"}
+      </button>
       <div className="map-vignette" aria-hidden="true" />
 
       {districts.map((district) => {

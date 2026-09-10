@@ -5233,3 +5233,293 @@ button:disabled { cursor: not-allowed; opacity: .5; }
 @media(max-width:980px){.figures-header,.figures-layout{grid-template-columns:1fr}.figures-why-grid,.figures-apply-grid{grid-template-columns:1fr}.figures-lens-deck{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.figures-page{width:calc(100% - 14px)}.figures-header-title h1{font-size:27px}.figures-banner-copy{padding:26px 20px}.figures-banner-copy h2{font-size:25px}.figures-prism{display:none}.figures-lens-deck{grid-template-columns:1fr}.figures-lens-focus{grid-template-columns:1fr}.figures-duel-lines{grid-template-columns:1fr}.figures-duel-lines>span{text-align:center}.figures-gallery,.figures-mastery,.figures-final-actions{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.figures-particles i{animation:none!important}.figures-lens-deck>button{transition:none!important}}
+
+
+/* ==========================================
+   V16 — POLIMENTO PARA APLICAÇÃO EM SALA
+========================================== */
+
+/* Navegação por teclado e leitura */
+.skip-link{
+  position:fixed;
+  left:16px;
+  top:10px;
+  z-index:9999;
+  transform:translateY(-180%);
+  padding:11px 14px;
+  border-radius:10px;
+  background:#fff;
+  color:#071522;
+  font-weight:900;
+  box-shadow:0 10px 28px rgba(0,0,0,.35)
+}
+.skip-link:focus{transform:none}
+button,input,textarea,select{font:inherit}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{
+  outline:3px solid rgba(71,216,255,.78);
+  outline-offset:3px
+}
+button,.primary-action,.secondary-action{min-height:44px}
+textarea{max-width:100%}
+
+/* A preferência do próprio jogo agora também reduz animações CSS */
+.app-shell.reduce-motion *,
+.app-shell.reduce-motion *::before,
+.app-shell.reduce-motion *::after{
+  scroll-behavior:auto!important;
+  animation-duration:.01ms!important;
+  animation-iteration-count:1!important;
+  transition-duration:.01ms!important
+}
+
+/* Pequenos textos foram ampliados para a aplicação em sala */
+.eyebrow{font-size:11px}
+.brand-lockup small{font-size:8px}
+.player-data span{font-size:10px}
+.player-data b{font-size:14px}
+.xp-meter span{font-size:10px}
+.primary-action,.secondary-action{font-size:13px;line-height:1.25}
+.mission-copy b{font-size:15px}
+.mission-copy small{font-size:12px;line-height:1.35}
+.mission-state{font-size:12px}
+.speaker{font-size:11px}
+.speech-card p{font-size:14px}
+.teacher-actions button{min-height:40px;font-size:12px}
+.pin-label strong{font-size:12px}
+.district-pin.selected .pin-label small,
+.district-pin:hover .pin-label small{font-size:10px}
+.district-pin.selected .pin-label em,
+.district-pin:hover .pin-label em{font-size:10px}
+
+/* HUD mais tolerante ao aumento de interface */
+.top-hud{flex-wrap:wrap}
+.player-hud{flex-wrap:wrap}
+.hud-badge,.hud-icon-button{min-width:44px;min-height:44px}
+
+/* O mapa abre limpo. Nomes continuam acessíveis ao selecionar,
+   ao passar o mouse ou ao ativar "Mostrar nomes". */
+.map-label-toggle{
+  position:absolute;
+  z-index:15;
+  right:12px;
+  top:12px;
+  min-height:42px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:8px 11px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:11px;
+  background:rgba(5,20,33,.88);
+  color:#eef8ff;
+  box-shadow:0 7px 18px rgba(0,0,0,.3);
+  backdrop-filter:blur(7px);
+  font-size:12px;
+  font-weight:850
+}
+.map-label-toggle>span{
+  width:28px;height:28px;display:grid;place-items:center;
+  border-radius:8px;background:rgba(71,216,255,.12);color:#8ce8ff
+}
+.map-stage:not(.show-labels) .district-pin:not(.selected):not(:hover) .pin-label{
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(-50%) translateX(-4px)
+}
+.pin-label{
+  transition:opacity .16s ease,transform .16s ease,visibility .16s ease
+}
+.map-stage.show-labels .pin-label{opacity:1;visibility:visible}
+
+/* Barra de missão */
+.mission-mini-progress{
+  display:block;
+  width:100%;
+  height:6px;
+  margin-top:6px;
+  overflow:hidden;
+  border-radius:999px;
+  background:rgba(255,255,255,.09)
+}
+.mission-mini-progress b{
+  display:block;
+  height:100%;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--cyan),var(--gold))
+}
+
+/* Briefing sem linguagem de protótipo */
+.briefing-route{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  margin:10px 0 14px;
+  padding:9px 11px;
+  border:1px solid color-mix(in srgb,var(--district-color) 32%,transparent);
+  border-radius:12px;
+  background:color-mix(in srgb,var(--district-color) 7%,transparent)
+}
+.briefing-route span{
+  color:var(--district-color);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.08em
+}
+.briefing-route strong{font-size:12px;color:#e8f2f8}
+.briefing-focus{
+  margin-top:17px;
+  padding:14px 15px;
+  border-left:4px solid var(--district-color);
+  border-radius:12px;
+  background:rgba(255,255,255,.035)
+}
+.briefing-focus p{
+  margin:6px 0 0;
+  color:#d4e1e9;
+  font-size:15px;
+  line-height:1.55
+}
+.briefing-start{width:100%;margin-top:16px;font-size:14px}
+
+/* Configurações e sessão */
+.setting-row b{font-size:13px}
+.setting-row small{font-size:11px;line-height:1.4}
+.setting-name{align-items:center}
+.setting-name>input{
+  width:min(230px,48%);
+  min-height:44px;
+  padding:9px 11px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:10px;
+  background:rgba(255,255,255,.06);
+  color:#fff
+}
+.settings-save-note{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-top:12px;
+  padding:11px 12px;
+  border:1px solid rgba(130,224,171,.22);
+  border-radius:12px;
+  background:rgba(130,224,171,.055)
+}
+.settings-save-note>span{
+  width:31px;height:31px;display:grid;place-items:center;border-radius:50%;
+  background:rgba(130,224,171,.13);color:#baf0d0;font-weight:900
+}
+.settings-save-note div{display:grid;gap:2px}
+.settings-save-note b{font-size:12px}
+.settings-save-note small{font-size:10px;color:#bfd2c7}
+.reset-confirmation{
+  margin-top:12px;
+  padding:12px;
+  border:1px solid rgba(255,123,139,.3);
+  border-radius:13px;
+  background:rgba(255,123,139,.06)
+}
+.reset-confirmation p{margin:0;color:#ffdce1;font-size:12px;line-height:1.5}
+.reset-confirmation>div{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+
+/* Resumo pedagógico do progresso */
+.progress-overview{
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1fr;
+  gap:11px;
+  margin:18px 0 12px
+}
+.progress-overview article{
+  padding:15px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:rgba(255,255,255,.035)
+}
+.progress-overview span{
+  display:block;
+  color:#92dff5;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.08em
+}
+.progress-overview strong{
+  display:block;
+  margin-top:5px;
+  font-size:29px
+}
+.progress-overview small{
+  display:block;
+  margin-top:5px;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.4
+}
+.overall-meter{
+  height:8px;
+  margin-top:10px;
+  overflow:hidden;
+  border-radius:999px;
+  background:rgba(255,255,255,.08)
+}
+.overall-meter i{
+  display:block;height:100%;border-radius:999px;
+  background:linear-gradient(90deg,var(--cyan),var(--gold),var(--green))
+}
+.next-mission-card{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:center;
+  margin:0 0 16px;
+  padding:15px 16px;
+  border:1px solid rgba(71,216,255,.2);
+  border-radius:16px;
+  background:linear-gradient(135deg,rgba(71,216,255,.06),rgba(255,213,61,.045))
+}
+.next-mission-card h2{margin:4px 0 5px;font-size:20px}
+.next-mission-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+.next-mission-card.complete-city{border-color:rgba(149,227,77,.25)}
+
+/* Alto contraste agora cobre o jogo todo, não apenas algumas telas */
+.app-shell.high-contrast{
+  --text:#fff;
+  --muted:#f2f7fa;
+  --line:rgba(255,255,255,.48)
+}
+.app-shell.high-contrast .top-hud,
+.app-shell.high-contrast .bottom-nav,
+.app-shell.high-contrast .teacher-zone,
+.app-shell.high-contrast .mission-dock,
+.app-shell.high-contrast .settings-dialog,
+.app-shell.high-contrast .progress-row,
+.app-shell.high-contrast .notebook-card,
+.app-shell.high-contrast .district-card,
+.app-shell.high-contrast .achievement-card{
+  border-color:rgba(255,255,255,.52)
+}
+.app-shell.high-contrast .pin-label,
+.app-shell.high-contrast .map-label-toggle{
+  background:#02080d;
+  border-color:#fff
+}
+.app-shell.high-contrast button:focus-visible,
+.app-shell.high-contrast input:focus-visible,
+.app-shell.high-contrast textarea:focus-visible,
+.app-shell.high-contrast a:focus-visible{
+  outline:4px solid #fff200;
+  outline-offset:3px
+}
+
+@media(max-width:900px){
+  .progress-overview{grid-template-columns:1fr}
+  .next-mission-card{align-items:flex-start;flex-direction:column}
+  .next-mission-card .primary-action{width:100%}
+}
+
+@media(max-width:590px){
+  .map-label-toggle{right:8px;top:8px}
+  .setting-name{align-items:stretch;flex-direction:column}
+  .setting-name>input{width:100%}
+  .reset-confirmation>div{flex-direction:column}
+  .reset-confirmation button{width:100%}
+}

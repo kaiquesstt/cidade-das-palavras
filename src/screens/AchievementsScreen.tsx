@@ -14,9 +14,8 @@ const badges = [
   { name: "Mestre da entrelinha", desc: "Restaurou a Estação Miniconto produzindo narrativa concisa, com movimento e espaço para inferência.", icon: "▣" },
   { name: "Mestre das lentes", desc: "Restaurou o Laboratório das Lentes reconhecendo e produzindo diferentes efeitos de sentido.", icon: "✺" },
   { name: "Cidade restaurada", desc: "Concluiu os oito grandes distritos da Cidade das Palavras.", icon: "★" },
-  { name: "Mestre dos contrastes", desc: "Diferencie conceitos próximos sem depender de memorização.", icon: "⚖" },
+  { name: "Mestre dos contrastes", desc: "Diferenciou conceitos próximos sem depender apenas de memorização.", icon: "⚖" },
   { name: "Autor da cidade", desc: "Complete uma produção própria.", icon: "✎" },
-  { name: "Cidade restaurada", desc: "Alcance 100% em todos os bairros.", icon: "★" }
 ];
 
 export function AchievementsScreen() {

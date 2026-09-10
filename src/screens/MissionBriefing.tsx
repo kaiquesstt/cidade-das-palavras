@@ -1,18 +1,78 @@
 
 import { TeacherGuide } from "../components/TeacherGuide";
-import { districtByKey } from "../data/districts";
+import { districts, districtByKey } from "../data/districts";
 import { useGameStore } from "../store/useGameStore";
+import type { DistrictKey, ViewKey } from "../types";
+
+const missionInfo: Record<
+  DistrictKey,
+  { view: ViewKey; action: string; focus: string }
+> = {
+  charge: {
+    view: "chargeMission",
+    action: "Iniciar investigação da Charge",
+    focus:
+      "Observar linguagem verbal e visual, reconhecer crítica e ironia, justificar com evidências, contrastar Charge × Tirinha e produzir uma nova situação."
+  },
+  fabula: {
+    view: "fableMission",
+    action: "Entrar na Floresta das Fábulas",
+    focus:
+      "Compreender personagens, conflito e reflexão moral; diferenciar Fábula × Lenda e produzir uma narrativa curta com consequência significativa."
+  },
+  lenda: {
+    view: "legendMission",
+    action: "Entrar na Vila das Lendas",
+    focus:
+      "Relacionar narrativa, lugar, memória coletiva, transmissão cultural e elemento extraordinário; contrastar Lenda × Fábula × Conto fantástico."
+  },
+  estatuto: {
+    view: "statuteMission",
+    action: "Entrar na Câmara da Cidade",
+    focus:
+      "Reconhecer finalidade normativa, direitos, deveres e responsabilidades; diferenciar Estatuto × Regulamento × Artigo de opinião e produzir um artigo normativo."
+  },
+  artigo: {
+    view: "opinionMission",
+    action: "Entrar na Redação Central",
+    focus:
+      "Localizar tema, tese, argumentos, evidência, contra-argumento e conclusão; diferenciar Artigo de opinião × Carta do leitor × Notícia."
+  },
+  carta: {
+    view: "readerLetterMission",
+    action: "Abrir a Central do Leitor",
+    focus:
+      "Identificar a publicação que provoca a resposta, destinatário, posicionamento, argumentos e proposta; contrastar Carta do leitor × Artigo de opinião × Carta pessoal."
+  },
+  miniconto: {
+    view: "minicontoMission",
+    action: "Entrar na Estação Miniconto",
+    focus:
+      "Perceber concisão, movimento narrativo, lacunas e inferência; diferenciar Miniconto × Frase de efeito × Resumo e produzir uma narrativa breve."
+  },
+  figuras: {
+    view: "figuresMission",
+    action: "Entrar no Laboratório das Lentes",
+    focus:
+      "Compreender anáfora, eufemismo, metáfora, comparação e personificação pelo efeito de sentido, justificar classificações e criar exemplos autorais."
+  }
+};
 
 export function MissionBriefing() {
   const selected = useGameStore((s) => s.selectedDistrict);
   const setActiveView = useGameStore((s) => s.setActiveView);
   const mastery = useGameStore((s) => s.mastery);
+  const progress = useGameStore((s) => s.progress);
 
   if (!selected) {
     return (
       <main className="content-screen">
         <h1>Nenhuma missão selecionada.</h1>
-        <button type="button" className="primary-action" onClick={() => setActiveView("map")}>
+        <button
+          type="button"
+          className="primary-action"
+          onClick={() => setActiveView("map")}
+        >
           Voltar ao mapa
         </button>
       </main>
@@ -21,12 +81,39 @@ export function MissionBriefing() {
 
   const district = districtByKey[selected];
   const status = mastery[selected];
+  const info = missionInfo[selected];
+  const routeNumber =
+    districts.findIndex((item) => item.key === selected) + 1;
+  const completedStages = Object.values(status).filter(Boolean).length;
+  const restored = progress[selected] === 100;
 
   return (
     <main className="mission-briefing-layout">
       <TeacherGuide />
-      <section className="briefing-panel" style={{ "--district-color": district.color } as React.CSSProperties}>
-        <button type="button" className="back-link" onClick={() => setActiveView("map")}>← Voltar ao mapa</button>
+
+      <section
+        className="briefing-panel"
+        style={
+          { "--district-color": district.color } as React.CSSProperties
+        }
+      >
+        <button
+          type="button"
+          className="back-link"
+          onClick={() => setActiveView("map")}
+        >
+          ← Voltar ao mapa
+        </button>
+
+        <div className="briefing-route">
+          <span>ROTA {routeNumber} DE 8</span>
+          <strong>
+            {restored
+              ? "DISTRITO RESTAURADO"
+              : `${completedStages}/4 habilidades concluídas`}
+          </strong>
+        </div>
+
         <span className="briefing-icon">{district.icon}</span>
         <span className="eyebrow">BRIEFING DA MISSÃO</span>
         <h1>{district.label}</h1>
@@ -35,162 +122,61 @@ export function MissionBriefing() {
         <div className="briefing-objectives">
           <article>
             <span>01</span>
-            <div><b>Descobrir</b><p>Observe primeiro a situação antes de receber uma definição.</p></div>
+            <div>
+              <b>Descobrir</b>
+              <p>Observe primeiro a situação antes de receber uma definição.</p>
+            </div>
           </article>
           <article>
             <span>02</span>
-            <div><b>Justificar</b><p>Use evidências que realmente provem a classificação.</p></div>
+            <div>
+              <b>Justificar</b>
+              <p>Use evidências que realmente provem a classificação.</p>
+            </div>
           </article>
           <article>
             <span>03</span>
-            <div><b>Aplicar</b><p>Transfira o critério para um caso novo.</p></div>
+            <div>
+              <b>Aplicar</b>
+              <p>Transfira o critério para um caso novo.</p>
+            </div>
           </article>
           <article>
             <span>04</span>
-            <div><b>Produzir</b><p>Crie algo usando conscientemente o que aprendeu.</p></div>
+            <div>
+              <b>Produzir</b>
+              <p>Crie algo usando conscientemente o que aprendeu.</p>
+            </div>
           </article>
         </div>
 
-        <div className="briefing-status">
-          <span className={status.recognize ? "done" : ""}>Reconhecer</span>
-          <span className={status.explain ? "done" : ""}>Explicar</span>
-          <span className={status.apply ? "done" : ""}>Aplicar</span>
-          <span className={status.produce ? "done" : ""}>Produzir</span>
+        <div className="briefing-status" aria-label="Habilidades da missão">
+          <span className={status.recognize ? "done" : ""}>
+            {status.recognize ? "✓" : "○"} Reconhecer
+          </span>
+          <span className={status.explain ? "done" : ""}>
+            {status.explain ? "✓" : "○"} Explicar
+          </span>
+          <span className={status.apply ? "done" : ""}>
+            {status.apply ? "✓" : "○"} Aplicar
+          </span>
+          <span className={status.produce ? "done" : ""}>
+            {status.produce ? "✓" : "○"} Produzir
+          </span>
         </div>
 
-
-        <div style={{ marginTop: "18px", display: "flex", gap: "10px", flexWrap: "wrap" }}>
-          {selected === "charge" && (
-            <button
-              type="button"
-              className="primary-action"
-              onClick={() => setActiveView("chargeMission")}
-            >
-              Iniciar investigação da Charge →
-            </button>
-          )}
-
-          {selected === "fabula" && (
-            <button
-              type="button"
-              className="primary-action"
-              onClick={() => setActiveView("fableMission")}
-            >
-              Entrar na Floresta das Fábulas →
-            </button>
-          )}
-
-          {selected === "lenda" && (
-            <button
-              type="button"
-              className="primary-action"
-              onClick={() => setActiveView("legendMission")}
-            >
-              Entrar na Vila das Lendas →
-            </button>
-          )}
-
-          {selected === "estatuto" && (
-            <button
-              type="button"
-              className="primary-action"
-              onClick={() => setActiveView("statuteMission")}
-            >
-              Entrar na Câmara da Cidade →
-            </button>
-          )}
-
-          {selected === "artigo" && (
-            <button
-              type="button"
-              className="primary-action"
-              onClick={() => setActiveView("opinionMission")}
-            >
-              Entrar na Redação Central →
-            </button>
-          )}
-
-          {selected === "carta" && (
-            <button
-              type="button"
-              className="primary-action"
-              onClick={() => setActiveView("readerLetterMission")}
-            >
-              Abrir a Central do Leitor →
-            </button>
-          )}
-
-          {selected === "miniconto" && (
-            <button
-              type="button"
-              className="primary-action"
-              onClick={() => setActiveView("minicontoMission")}
-            >
-              Entrar na Estação Miniconto →
-            </button>
-          )}
-
-          {selected === "figuras" && (
-            <button
-              type="button"
-              className="primary-action"
-              onClick={() => setActiveView("figuresMission")}
-            >
-              Entrar no Laboratório das Lentes →
-            </button>
-          )}
-
-          {selected !== "charge" && selected !== "fabula" && selected !== "lenda" && selected !== "estatuto" && selected !== "artigo" && selected !== "carta" && selected !== "miniconto" && selected !== "figuras" && (
-            <button
-              type="button"
-              className="secondary-action"
-              onClick={() => setActiveView("map")}
-            >
-              Missão completa em breve
-            </button>
-          )}
+        <div className="briefing-focus">
+          <span className="eyebrow">O QUE VOCÊ VAI TREINAR</span>
+          <p>{info.focus}</p>
         </div>
 
-        <div className="pilot-note">
-          <b>
-            {selected === "charge"
-              ? "A missão de Charge está conectada."
-              : selected === "fabula"
-                ? "A missão de Fábula está conectada."
-                : selected === "lenda"
-                  ? "A missão de Lenda está conectada."
-                  : selected === "estatuto"
-                    ? "A missão de Estatuto está conectada."
-                    : selected === "artigo"
-                      ? "A missão de Artigo de opinião está conectada."
-                      : selected === "carta"
-                        ? "A missão de Carta do leitor está conectada."
-                        : selected === "miniconto"
-                          ? "A missão de Miniconto está conectada."
-                          : selected === "figuras"
-                            ? "A missão de Figuras de linguagem está conectada."
-                            : "Este distrito ainda está sendo preparado."}
-          </b>
-          <p>
-            {selected === "fabula"
-              ? "A missão trabalha leitura narrativa, características da fábula, moral implícita, justificativa, contraste Fábula × Lenda, aplicação e produção."
-              : selected === "lenda"
-                ? "A missão trabalha tradição, memória coletiva, relação com o lugar, elemento extraordinário, contraste Lenda × Fábula × Conto fantástico, aplicação e produção."
-                : selected === "estatuto"
-                  ? "A missão trabalha finalidade normativa, direitos, deveres, proibições, organização em artigos, contraste Estatuto × Regulamento × Artigo de opinião, aplicação e produção de um novo artigo."
-                  : selected === "artigo"
-                    ? "A missão trabalha tema, tese, argumentos, evidências, contra-argumento, conclusão e contraste Artigo de opinião × Carta do leitor × Notícia."
-                    : selected === "carta"
-                      ? "A missão trabalha referência a uma publicação anterior, destinatário, posicionamento do leitor, argumentos, proposta e contraste Carta do leitor × Artigo de opinião × Carta pessoal."
-                      : selected === "miniconto"
-                        ? "A missão trabalha concisão, movimento narrativo, recorte de cena, lacunas para inferência, efeito final e contraste Miniconto × Frase de efeito × Resumo."
-                        : selected === "figuras"
-                          ? "A missão transforma anáfora, eufemismo, metáfora, comparação e personificação em cinco lentes de sentido, com identificação, justificativa, contraste, aplicação e produção."
-                          : selected === "charge"
-                  ? "A experiência percorre observação, classificação, justificativa, contraste, aplicação e produção."
-                  : "Todos os distritos principais já possuem missão completa."}
-          </p>
-        </div>
+        <button
+          type="button"
+          className="primary-action briefing-start"
+          onClick={() => setActiveView(info.view)}
+        >
+          {restored ? "Revisar missão" : info.action} →
+        </button>
       </section>
     </main>
   );

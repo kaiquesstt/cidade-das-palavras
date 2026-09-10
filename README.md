@@ -222,3 +222,29 @@ Mecânicas:
 - Nova conquista: **Mestre das lentes**.
 - Conquista extra **Cidade restaurada** quando os sete distritos anteriores já estiverem em 100%.
 - Migração V15 preserva o progresso real de todos os distritos anteriores e remove apenas o antigo progresso demonstrativo de Figuras.
+
+
+## V16 — Polimento para aplicação com estudantes
+
+Esta versão não acrescenta um novo conteúdo. Ela prepara o jogo completo para
+a primeira aplicação em sala.
+
+Principais mudanças:
+
+- novos usuários começam em **Nível 1, 0 XP e sem conquistas fictícias**;
+- migração remove o antigo estado de demonstração apenas quando não existe
+  progresso real;
+- nome do estudante pode ser informado em Configurações;
+- reinício de sessão exige confirmação e preserva acessibilidade;
+- tela cheia disponível diretamente no HUD;
+- botão de conquistas do HUD agora é funcional;
+- controle **Mostrar/Ocultar nomes** deixa o mapa mais visível;
+- textos pequenos e áreas clicáveis foram ampliados;
+- foco de teclado também cobre campos de texto;
+- a opção **Reduzir animações** passa a interromper também animações CSS;
+- briefing dos oito distritos foi reescrito sem mensagens de desenvolvimento;
+- missão concluída passa a aparecer como **Revisar missão**;
+- tela de Progresso mostra percentual geral, distritos restaurados,
+  habilidades concluídas e próxima rota sugerida;
+- conquista duplicada “Cidade restaurada” foi removida;
+- conquistas genéricas iniciais agora são obtidas pelo progresso real.

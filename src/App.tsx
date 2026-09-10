@@ -80,12 +80,15 @@ export default function App() {
 
   return (
     <div
-      className={`app-shell ${highContrast ? "high-contrast" : ""}`}
+      className={`app-shell ${highContrast ? "high-contrast" : ""} ${reducedMotion ? "reduce-motion" : ""}`}
       ref={root}
       style={{ zoom: fontScale, width: `calc(100% / ${fontScale})` }}
     >
+      <a className="skip-link" href="#game-content">
+        Pular para o conteúdo
+      </a>
       <TopHUD />
-      <div className="app-view" key={activeView}>
+      <div id="game-content" className="app-view" key={activeView} tabIndex={-1}>
         <CurrentScreen />
       </div>
       {activeView !== "mission" && activeView !== "chargeMission" && activeView !== "fableMission" && activeView !== "legendMission" && activeView !== "statuteMission" && activeView !== "opinionMission" && activeView !== "readerLetterMission" && activeView !== "minicontoMission" && activeView !== "figuresMission" && <BottomNav />}
