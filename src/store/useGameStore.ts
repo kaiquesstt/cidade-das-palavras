@@ -42,7 +42,7 @@ const initialProgress: ProgressMap = {
   artigo: 0,
   carta: 0,
   miniconto: 0,
-  figuras: 50
+  figuras: 0
 };
 
 const initialMastery: MasteryMap = {
@@ -53,7 +53,7 @@ const initialMastery: MasteryMap = {
   artigo: { recognize: false, explain: false, apply: false, produce: false },
   carta: { recognize: false, explain: false, apply: false, produce: false },
   miniconto: { recognize: false, explain: false, apply: false, produce: false },
-  figuras: { recognize: true, explain: true, apply: false, produce: false }
+  figuras: { recognize: false, explain: false, apply: false, produce: false }
 };
 
 export const useGameStore = create<GameState>()(
@@ -141,7 +141,7 @@ resetDemo: () =>
     }),
     {
       name: "cidade-das-palavras-v9",
-      version: 14,
+      version: 15,
       migrate: (persistedState: unknown, version) => {
         const state = persistedState as Partial<GameState>;
         const progress = {
@@ -173,11 +173,16 @@ resetDemo: () =>
           mastery.carta = initialMastery.carta;
         }
 
-        // V14 introduz a missão real de Miniconto.
-        // O antigo 75% era apenas progresso demonstrativo.
         if (version < 14) {
           progress.miniconto = 0;
           mastery.miniconto = initialMastery.miniconto;
+        }
+
+        // V15 introduz a missão real de Figuras de Linguagem.
+        // O antigo 50% era apenas progresso demonstrativo.
+        if (version < 15) {
+          progress.figuras = 0;
+          mastery.figuras = initialMastery.figuras;
         }
 
         const clearRestored =
@@ -185,7 +190,8 @@ resetDemo: () =>
           (version < 11 && state.recentlyRestored === "estatuto") ||
           (version < 12 && state.recentlyRestored === "artigo") ||
           (version < 13 && state.recentlyRestored === "carta") ||
-          (version < 14 && state.recentlyRestored === "miniconto");
+          (version < 14 && state.recentlyRestored === "miniconto") ||
+          (version < 15 && state.recentlyRestored === "figuras");
 
         return {
           ...state,

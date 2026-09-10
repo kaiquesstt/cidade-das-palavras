@@ -22,7 +22,8 @@ export type ViewKey =
   | "statuteMission"
   | "opinionMission"
   | "readerLetterMission"
-  | "minicontoMission";
+  | "minicontoMission"
+  | "figuresMission";
 
 export type MasteryStage = "recognize" | "explain" | "apply" | "produce";
 

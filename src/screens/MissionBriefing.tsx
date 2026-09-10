@@ -130,7 +130,17 @@ export function MissionBriefing() {
             </button>
           )}
 
-          {selected !== "charge" && selected !== "fabula" && selected !== "lenda" && selected !== "estatuto" && selected !== "artigo" && selected !== "carta" && selected !== "miniconto" && (
+          {selected === "figuras" && (
+            <button
+              type="button"
+              className="primary-action"
+              onClick={() => setActiveView("figuresMission")}
+            >
+              Entrar no Laboratório das Lentes →
+            </button>
+          )}
+
+          {selected !== "charge" && selected !== "fabula" && selected !== "lenda" && selected !== "estatuto" && selected !== "artigo" && selected !== "carta" && selected !== "miniconto" && selected !== "figuras" && (
             <button
               type="button"
               className="secondary-action"
@@ -157,7 +167,9 @@ export function MissionBriefing() {
                         ? "A missão de Carta do leitor está conectada."
                         : selected === "miniconto"
                           ? "A missão de Miniconto está conectada."
-                          : "Este distrito ainda está sendo preparado."}
+                          : selected === "figuras"
+                            ? "A missão de Figuras de linguagem está conectada."
+                            : "Este distrito ainda está sendo preparado."}
           </b>
           <p>
             {selected === "fabula"
@@ -172,9 +184,11 @@ export function MissionBriefing() {
                       ? "A missão trabalha referência a uma publicação anterior, destinatário, posicionamento do leitor, argumentos, proposta e contraste Carta do leitor × Artigo de opinião × Carta pessoal."
                       : selected === "miniconto"
                         ? "A missão trabalha concisão, movimento narrativo, recorte de cena, lacunas para inferência, efeito final e contraste Miniconto × Frase de efeito × Resumo."
-                        : selected === "charge"
+                        : selected === "figuras"
+                          ? "A missão transforma anáfora, eufemismo, metáfora, comparação e personificação em cinco lentes de sentido, com identificação, justificativa, contraste, aplicação e produção."
+                          : selected === "charge"
                   ? "A experiência percorre observação, classificação, justificativa, contraste, aplicação e produção."
-                  : "Os próximos distritos usarão o mesmo modelo de aprendizagem já validado em Charge, Fábula, Lenda, Estatuto, Artigo de opinião, Carta do leitor e Miniconto."}
+                  : "Todos os distritos principais já possuem missão completa."}
           </p>
         </div>
       </section>

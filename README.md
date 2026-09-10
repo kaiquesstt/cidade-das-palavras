@@ -199,3 +199,26 @@ Sétimo distrito completo do jogo.
 - Nova conquista: **Mestre da entrelinha**.
 - Miniconto começa em 0% e pode chegar a 100%.
 - Migração V14 preserva o progresso real dos seis distritos anteriores e remove apenas o antigo progresso demonstrativo do Miniconto.
+
+
+## V15 — Laboratório das Lentes / Figuras de linguagem
+
+Oitavo e último distrito curricular principal.
+
+Figuras trabalhadas:
+- Anáfora — **Lente Eco**
+- Eufemismo — **Lente Véu**
+- Metáfora — **Lente Portal**
+- Comparação — **Lente Ponte**
+- Personificação — **Lente Sopro**
+
+Mecânicas:
+- Desbloqueio das cinco lentes pelo **efeito de sentido**, antes da memorização do nome.
+- Identificação de cinco casos com feedback explicando por que a resposta é correta.
+- Etapa específica de justificativa: o estudante precisa selecionar o critério realmente válido.
+- Duelos de contraste: **Metáfora × Comparação**, **Eufemismo × Metáfora**, **Anáfora × repetição qualquer** e **Personificação × ação literal**.
+- Aplicação inversa: o jogo apresenta um efeito comunicativo e o estudante escolhe a figura adequada.
+- Produção final no **Ateliê das Três Lentes**, com três exemplos autorais de figuras diferentes e autorrevisão.
+- Nova conquista: **Mestre das lentes**.
+- Conquista extra **Cidade restaurada** quando os sete distritos anteriores já estiverem em 100%.
+- Migração V15 preserva o progresso real de todos os distritos anteriores e remove apenas o antigo progresso demonstrativo de Figuras.

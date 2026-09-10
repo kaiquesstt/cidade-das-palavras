@@ -12,6 +12,8 @@ const badges = [
   { name: "Voz argumentativa", desc: "Restaurou a Redação Central defendendo uma tese com argumentos, evidências e resposta a objeções.", icon: "✦" },
   { name: "Voz do leitor", desc: "Restaurou a Central do Leitor dialogando com uma publicação de forma pública, argumentada e respeitosa.", icon: "✉" },
   { name: "Mestre da entrelinha", desc: "Restaurou a Estação Miniconto produzindo narrativa concisa, com movimento e espaço para inferência.", icon: "▣" },
+  { name: "Mestre das lentes", desc: "Restaurou o Laboratório das Lentes reconhecendo e produzindo diferentes efeitos de sentido.", icon: "✺" },
+  { name: "Cidade restaurada", desc: "Concluiu os oito grandes distritos da Cidade das Palavras.", icon: "★" },
   { name: "Mestre dos contrastes", desc: "Diferencie conceitos próximos sem depender de memorização.", icon: "⚖" },
   { name: "Autor da cidade", desc: "Complete uma produção própria.", icon: "✎" },
   { name: "Cidade restaurada", desc: "Alcance 100% em todos os bairros.", icon: "★" }
