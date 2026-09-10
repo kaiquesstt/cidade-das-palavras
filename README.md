@@ -167,3 +167,18 @@ Quinto distrito completo do jogo.
 - Nova conquista: **Voz argumentativa**.
 - Artigo de opinião começa em 0% e pode chegar a 100%.
 - Migração V12 preserva o progresso real dos quatro distritos anteriores e remove apenas o antigo progresso demonstrativo do Artigo.
+
+
+## V13 — Central do Leitor / Carta do leitor
+
+Sexto distrito completo do jogo.
+
+- Situação comunicativa original e fictícia: uma leitora responde a uma reportagem do **Jornal da Cidade**.
+- Nova mecânica inicial: **Rastrear o fio da conversa**, conectando publicação anterior, destinatário, posicionamento, argumento, proposta e identificação.
+- Fluxo: Investigar → Classificar → Justificar → Contrastar → Aplicar → Produzir.
+- Contraste principal: **Carta do leitor × Artigo de opinião × Carta pessoal**.
+- A missão destaca que saudação, assinatura e tamanho não bastam para classificar o gênero.
+- Produção final: escolha de uma publicação, posicionamento, duas razões, pedido/proposta e escrita de uma mensagem autoral.
+- Nova conquista: **Voz do leitor**.
+- Carta do leitor começa em 0% e pode chegar a 100%.
+- Migração V13 preserva o progresso real dos cinco distritos anteriores e remove apenas o antigo progresso demonstrativo da Carta.

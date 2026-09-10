@@ -110,7 +110,17 @@ export function MissionBriefing() {
             </button>
           )}
 
-          {selected !== "charge" && selected !== "fabula" && selected !== "lenda" && selected !== "estatuto" && selected !== "artigo" && (
+          {selected === "carta" && (
+            <button
+              type="button"
+              className="primary-action"
+              onClick={() => setActiveView("readerLetterMission")}
+            >
+              Abrir a Central do Leitor →
+            </button>
+          )}
+
+          {selected !== "charge" && selected !== "fabula" && selected !== "lenda" && selected !== "estatuto" && selected !== "artigo" && selected !== "carta" && (
             <button
               type="button"
               className="secondary-action"
@@ -133,7 +143,9 @@ export function MissionBriefing() {
                     ? "A missão de Estatuto está conectada."
                     : selected === "artigo"
                       ? "A missão de Artigo de opinião está conectada."
-                      : "Este distrito ainda está sendo preparado."}
+                      : selected === "carta"
+                        ? "A missão de Carta do leitor está conectada."
+                        : "Este distrito ainda está sendo preparado."}
           </b>
           <p>
             {selected === "fabula"
@@ -144,9 +156,11 @@ export function MissionBriefing() {
                   ? "A missão trabalha finalidade normativa, direitos, deveres, proibições, organização em artigos, contraste Estatuto × Regulamento × Artigo de opinião, aplicação e produção de um novo artigo."
                   : selected === "artigo"
                     ? "A missão trabalha tema, tese, argumentos, evidências, contra-argumento, conclusão e contraste Artigo de opinião × Carta do leitor × Notícia."
-                    : selected === "charge"
+                    : selected === "carta"
+                      ? "A missão trabalha referência a uma publicação anterior, destinatário, posicionamento do leitor, argumentos, proposta e contraste Carta do leitor × Artigo de opinião × Carta pessoal."
+                      : selected === "charge"
                   ? "A experiência percorre observação, classificação, justificativa, contraste, aplicação e produção."
-                  : "Os próximos distritos usarão o mesmo modelo de aprendizagem já validado em Charge, Fábula, Lenda, Estatuto e Artigo de opinião."}
+                  : "Os próximos distritos usarão o mesmo modelo de aprendizagem já validado em Charge, Fábula, Lenda, Estatuto, Artigo de opinião e Carta do leitor."}
           </p>
         </div>
       </section>

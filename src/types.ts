@@ -20,7 +20,8 @@ export type ViewKey =
   | "fableMission"
   | "legendMission"
   | "statuteMission"
-  | "opinionMission";
+  | "opinionMission"
+  | "readerLetterMission";
 
 export type MasteryStage = "recognize" | "explain" | "apply" | "produce";
 

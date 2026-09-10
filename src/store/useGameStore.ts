@@ -40,7 +40,7 @@ const initialProgress: ProgressMap = {
   lenda: 0,
   estatuto: 0,
   artigo: 0,
-  carta: 25,
+  carta: 0,
   miniconto: 75,
   figuras: 50
 };
@@ -51,7 +51,7 @@ const initialMastery: MasteryMap = {
   lenda: { recognize: false, explain: false, apply: false, produce: false },
   estatuto: { recognize: false, explain: false, apply: false, produce: false },
   artigo: { recognize: false, explain: false, apply: false, produce: false },
-  carta: { recognize: true, explain: false, apply: false, produce: false },
+  carta: { recognize: false, explain: false, apply: false, produce: false },
   miniconto: { recognize: true, explain: true, apply: true, produce: false },
   figuras: { recognize: true, explain: true, apply: false, produce: false }
 };
@@ -141,7 +141,7 @@ resetDemo: () =>
     }),
     {
       name: "cidade-das-palavras-v9",
-      version: 12,
+      version: 13,
       migrate: (persistedState: unknown, version) => {
         const state = persistedState as Partial<GameState>;
         const progress = {
@@ -163,17 +163,23 @@ resetDemo: () =>
           mastery.estatuto = initialMastery.estatuto;
         }
 
-        // V12 introduz a missão real de Artigo de Opinião.
-        // O antigo 50% era apenas progresso demonstrativo.
         if (version < 12) {
           progress.artigo = 0;
           mastery.artigo = initialMastery.artigo;
         }
 
+        // V13 introduz a missão real de Carta do Leitor.
+        // O antigo 25% era apenas progresso demonstrativo.
+        if (version < 13) {
+          progress.carta = 0;
+          mastery.carta = initialMastery.carta;
+        }
+
         const clearRestored =
           (version < 10 && state.recentlyRestored === "lenda") ||
           (version < 11 && state.recentlyRestored === "estatuto") ||
-          (version < 12 && state.recentlyRestored === "artigo");
+          (version < 12 && state.recentlyRestored === "artigo") ||
+          (version < 13 && state.recentlyRestored === "carta");
 
         return {
           ...state,
