@@ -121,3 +121,18 @@ e publicará automaticamente a pasta `dist`.
 
 O `vite.config.ts` usa `base: "./"`, portanto o projeto não precisa ter o nome
 do repositório gravado no código e funciona bem em páginas de projeto do GitHub Pages.
+
+
+## V10 — Vila das Lendas
+
+Terceiro distrito completo do jogo.
+
+- Lenda original: **A Pedra que Canta**.
+- Local explicitamente fictício: **Vila do Murici**, dentro do universo do jogo.
+- Fluxo completo: Investigar → Classificar → Justificar → Contrastar → Aplicar → Produzir.
+- Contraste principal: **Lenda × Fábula × Conto fantástico**.
+- Produção final: lugar → acontecimento misterioso → explicação cultural → transmissão entre gerações.
+- Nova conquista: **Guardião da memória**.
+- A Lenda começa em 0% e pode ser restaurada até 100%.
+- Migração de estado preserva progresso já conquistado em Charge e Fábula.
+- `src/vite-env.d.ts` já incluído para evitar o erro de módulos `.webp` no GitHub Actions.

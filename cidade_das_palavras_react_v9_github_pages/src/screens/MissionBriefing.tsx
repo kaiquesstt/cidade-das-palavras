@@ -80,7 +80,17 @@ export function MissionBriefing() {
             </button>
           )}
 
-          {selected !== "charge" && selected !== "fabula" && (
+          {selected === "lenda" && (
+            <button
+              type="button"
+              className="primary-action"
+              onClick={() => setActiveView("legendMission")}
+            >
+              Entrar na Vila das Lendas →
+            </button>
+          )}
+
+          {selected !== "charge" && selected !== "fabula" && selected !== "lenda" && (
             <button
               type="button"
               className="secondary-action"
@@ -97,14 +107,18 @@ export function MissionBriefing() {
               ? "A missão de Charge está conectada."
               : selected === "fabula"
                 ? "A missão de Fábula está conectada."
-                : "Este distrito ainda está sendo preparado."}
+                : selected === "lenda"
+                  ? "A missão de Lenda está conectada."
+                  : "Este distrito ainda está sendo preparado."}
           </b>
           <p>
             {selected === "fabula"
               ? "A missão trabalha leitura narrativa, características da fábula, moral implícita, justificativa, contraste Fábula × Lenda, aplicação e produção."
-              : selected === "charge"
-                ? "A experiência percorre observação, classificação, justificativa, contraste, aplicação e produção."
-                : "Os próximos distritos usarão o mesmo modelo de aprendizagem já validado em Charge e Fábula."}
+              : selected === "lenda"
+                ? "A missão trabalha tradição, memória coletiva, relação com o lugar, elemento extraordinário, contraste Lenda × Fábula × Conto fantástico, aplicação e produção."
+                : selected === "charge"
+                  ? "A experiência percorre observação, classificação, justificativa, contraste, aplicação e produção."
+                  : "Os próximos distritos usarão o mesmo modelo de aprendizagem já validado em Charge, Fábula e Lenda."}
           </p>
         </div>
       </section>

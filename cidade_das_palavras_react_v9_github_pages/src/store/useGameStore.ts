@@ -37,7 +37,7 @@ interface GameState {
 const initialProgress: ProgressMap = {
   charge: 0,
   fabula: 0,
-  lenda: 25,
+  lenda: 0,
   estatuto: 25,
   artigo: 50,
   carta: 25,
@@ -48,7 +48,7 @@ const initialProgress: ProgressMap = {
 const initialMastery: MasteryMap = {
   charge: { recognize: false, explain: false, apply: false, produce: false },
   fabula: { recognize: false, explain: false, apply: false, produce: false },
-  lenda: { recognize: true, explain: false, apply: false, produce: false },
+  lenda: { recognize: false, explain: false, apply: false, produce: false },
   estatuto: { recognize: true, explain: false, apply: false, produce: false },
   artigo: { recognize: true, explain: true, apply: false, produce: false },
   carta: { recognize: true, explain: false, apply: false, produce: false },
@@ -139,6 +139,32 @@ resetDemo: () =>
           recentlyRestored: null
         })
     }),
-    { name: "cidade-das-palavras-v9" }
+    {
+      name: "cidade-das-palavras-v9",
+      version: 10,
+      migrate: (persistedState: unknown, version) => {
+        const state = persistedState as Partial<GameState>;
+
+        if (version < 10) {
+          return {
+            ...state,
+            progress: {
+              ...initialProgress,
+              ...(state.progress ?? {}),
+              lenda: 0
+            },
+            mastery: {
+              ...initialMastery,
+              ...(state.mastery ?? {}),
+              lenda: initialMastery.lenda
+            },
+            recentlyRestored:
+              state.recentlyRestored === "lenda" ? null : (state.recentlyRestored ?? null)
+          } as GameState;
+        }
+
+        return state as GameState;
+      }
+    }
   )
 );

@@ -6,6 +6,7 @@ import { TopHUD } from "./components/TopHUD";
 import { AchievementsScreen } from "./screens/AchievementsScreen";
 import { ChargeMissionScreen } from "./screens/ChargeMissionScreen";
 import { FableMissionScreen } from "./screens/FableMissionScreen";
+import { LegendMissionScreen } from "./screens/LegendMissionScreen";
 import { HomeScreen } from "./screens/HomeScreen";
 import { MapScreen } from "./screens/MapScreen";
 import { MissionBriefing } from "./screens/MissionBriefing";
@@ -34,6 +35,8 @@ function CurrentScreen() {
       return <ChargeMissionScreen />;
     case "fableMission":
       return <FableMissionScreen />;
+    case "legendMission":
+      return <LegendMissionScreen />;
     case "home":
     default:
       return <HomeScreen />;
@@ -70,7 +73,7 @@ export default function App() {
       <div className="app-view" key={activeView}>
         <CurrentScreen />
       </div>
-      {activeView !== "mission" && activeView !== "chargeMission" && activeView !== "fableMission" && <BottomNav />}
+      {activeView !== "mission" && activeView !== "chargeMission" && activeView !== "fableMission" && activeView !== "legendMission" && <BottomNav />}
     </div>
   );
 }

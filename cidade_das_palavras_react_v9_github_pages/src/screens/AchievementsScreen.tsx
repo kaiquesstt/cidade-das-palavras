@@ -7,6 +7,7 @@ const badges = [
   { name: "Investigador", desc: "Visitou diferentes bairros da Cidade das Palavras.", icon: "✦" },
   { name: "Cronista da crítica", desc: "Concluiu o Distrito da Charge dominando leitura crítica e produção.", icon: "?!" },
   { name: "Leitor de entrelinhas", desc: "Concluiu a Floresta das Fábulas inferindo moral, justificando o gênero e produzindo uma nova fábula.", icon: "◆" },
+  { name: "Guardião da memória", desc: "Restaurou a Vila das Lendas compreendendo tradição, memória coletiva e transmissão cultural.", icon: "☾" },
   { name: "Mestre dos contrastes", desc: "Diferencie conceitos próximos sem depender de memorização.", icon: "⚖" },
   { name: "Autor da cidade", desc: "Complete uma produção própria.", icon: "✎" },
   { name: "Cidade restaurada", desc: "Alcance 100% em todos os bairros.", icon: "★" }
