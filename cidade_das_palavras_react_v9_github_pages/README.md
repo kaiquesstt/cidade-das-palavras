@@ -1,0 +1,123 @@
+# Cidade das Palavras — Hub React v1
+
+Versão consolidada do Hub visual aprovado para o jogo educativo de Língua Portuguesa.
+
+## Stack
+- React
+- TypeScript
+- Vite
+- GSAP
+- Zustand com persistência local
+
+## O que já funciona
+- Mapa ilustrado com 8 bairros clicáveis sem cobrir excessivamente a arte;
+- Seleção persistente de bairro;
+- Professora-guia reage ao bairro selecionado;
+- Missão atual e entrada no briefing da missão;
+- Navegação funcional: Início, Mapa, Missões, Conquistas, Caderno e Progresso;
+- Caderno com finalidade, pista-chave e contraste;
+- Relatório de domínio em Reconhecer / Explicar / Aplicar / Produzir;
+- Conquistas;
+- Configurações de som e redução de movimento;
+- Estado persistente no navegador;
+- Briefing reutilizável que será conectado às missões completas.
+
+## Próxima integração planejada
+1. Missão completa de Charge;
+2. Missão completa de Fábula;
+3. Laboratório de Figuras de Linguagem;
+4. Replicar a arquitetura para os demais conteúdos.
+
+## Executar
+```bash
+npm install
+npm run dev
+```
+
+## Gerar versão de produção
+```bash
+npm run build
+```
+
+A pasta `dist/` poderá ser hospedada no GitHub Pages ou em outro serviço de hospedagem estática.
+
+
+## Novidade desta versão
+- Missão completa do **Distrito da Charge** já implementada;
+- Fluxo pedagógico: investigação → classificação → justificativa → contraste → aplicação → produção;
+- Atualização automática do progresso de Charge até 100%;
+- Novo selo: **Cronista da crítica**.
+
+
+### Ajuste visual v3
+- A charge deixou de ser uma representação CSS simplificada e agora usa uma ilustração ampla e legível, aproximando a implementação da direção visual aprovada.
+
+## Distrito da Charge — v4
+- A charge agora permanece grande e legível durante toda a missão.
+- O painel de interação fica ao lado e muda conforme a etapa.
+- Foram removidas as representações simplificadas por CSS da charge.
+- Implementadas seis etapas funcionais: Investigar, Classificar, Justificar, Contrastar, Aplicar e Produzir.
+- Progresso de Charge inicia em 0% e chega a 100% ao completar a missão.
+
+## Ajuste v5 — correção de sobreposição
+- Corrigido overflow do painel da professora.
+- A imagem da professora agora fica estritamente limitada à coluna lateral.
+- A charge e o painel de perguntas não são mais cobertos pela imagem lateral.
+- Melhorada a adaptação para resoluções intermediárias.
+
+## Distrito da Charge — v6 acessível
+- Professora-guia renomeada para **Profª Patrícia**.
+- Painel de perguntas reposicionado **abaixo da charge**, para leitura mais confortável.
+- Etapas da missão reorganizadas em lista vertical, evitando texto apertado.
+- Tamanhos de fonte ampliados.
+- Botões **A- / A+** adicionados para acessibilidade e baixa visão.
+
+## Distrito da Charge — v7
+- Nome corrigido para **Profª Fabricia**.
+- Lista “Sua missão” corrigida para formato vertical, sem sobreposição de palavras.
+- Controle A-/A+ corrigido e com indicação visível do percentual de tamanho do texto.
+- Botão **Padrão** incluído para restaurar o tamanho inicial.
+- Limite de ampliação aumentado para 150%.
+
+
+## V8 — Primeiro ciclo completo
+- Cidade → Charge → aprendizagem → recompensa → cidade restaurada.
+- Cada domínio novo concede +25 XP sem duplicar recompensa ao repetir.
+- Charge chega a 100% e o mapa exibe brilho, estrela e aviso de restauração.
+- Profª Fabricia reconhece o distrito restaurado.
+- Acessibilidade global: 90% a 150%, alto contraste e redução de animações.
+- A Charge fica consolidada como molde das próximas missões.
+
+## V9 — Floresta das Fábulas
+- Distrito de **Fábula** totalmente implementado.
+- Texto original: **“A Onça e o Vagalume”**.
+- Fluxo: Investigar → Classificar → Justificar → Contrastar Fábula × Lenda → Aplicar → Produzir.
+- Moral trabalhada de forma **implícita**, evitando decorar uma definição antes da leitura.
+- Produção final em formato de planejamento narrativo.
+- Fábula começa em 0% e pode chegar a 100%, restaurando o distrito no mapa.
+- Nova conquista: **Leitor de entrelinhas**.
+- Mantidas as configurações globais de acessibilidade, XP e restauração visual.
+
+
+## Publicação no GitHub Pages
+
+Esta versão já inclui publicação automática por GitHub Actions.
+
+### Configuração inicial
+1. Envie o projeto para um repositório GitHub.
+2. Abra **Settings → Pages**.
+3. Em **Build and deployment → Source**, selecione **GitHub Actions**.
+4. Faça um push para a branch `main`.
+
+O workflow `.github/workflows/deploy-pages.yml` executará:
+
+```text
+npm install
+npm run check
+npm run build
+```
+
+e publicará automaticamente a pasta `dist`.
+
+O `vite.config.ts` usa `base: "./"`, portanto o projeto não precisa ter o nome
+do repositório gravado no código e funciona bem em páginas de projeto do GitHub Pages.

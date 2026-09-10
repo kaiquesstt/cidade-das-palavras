@@ -1,0 +1,61 @@
+CIDADE DAS PALAVRAS — PUBLICAÇÃO NO GITHUB PAGES
+===================================================
+
+Este projeto já está preparado para publicação automática no GitHub Pages.
+
+1. CRIE UM REPOSITÓRIO NO GITHUB
+   Sugestão de nome:
+   cidade-das-palavras
+
+   Pode ser público. Se sua conta/plano permitir GitHub Pages em repositório privado,
+   também pode ser privado.
+
+2. EXTRAIA ESTE ZIP
+   Abra a pasta:
+   cidade_das_palavras_react_v9_github_pages
+
+3. ENVIE O CONTEÚDO DA PASTA PARA O REPOSITÓRIO
+   É importante enviar os arquivos que estão DENTRO da pasta do projeto,
+   incluindo a pasta oculta:
+   .github/workflows/
+
+4. NO GITHUB, ABRA:
+   Settings > Pages
+
+5. EM "Build and deployment" / "Source"
+   selecione:
+   GitHub Actions
+
+6. VOLTE PARA A ABA "ACTIONS"
+   O fluxo "Publicar no GitHub Pages" deve iniciar automaticamente.
+   Ele:
+   - instala as dependências;
+   - verifica o TypeScript;
+   - gera o build;
+   - publica a pasta dist.
+
+7. QUANDO O PROCESSO TERMINAR
+   O endereço normalmente será:
+
+   https://SEU-USUARIO.github.io/cidade-das-palavras/
+
+COMO ATUALIZAR O JOGO DEPOIS
+============================
+
+Sempre que você enviar novas alterações para a branch "main",
+o GitHub Actions publicará a nova versão automaticamente.
+
+IMPORTANTE SOBRE O PROGRESSO DOS ALUNOS
+=======================================
+
+O progresso atual é salvo no localStorage do navegador.
+
+Isso significa:
+- ao atualizar o site, o progresso permanece naquele navegador;
+- limpar os dados do navegador apaga o progresso;
+- outro computador/navegador começa com outro progresso;
+- em computadores compartilhados, alunos podem compartilhar o mesmo progresso
+  se usarem o mesmo perfil do navegador.
+
+Isso NÃO impede a publicação no GitHub Pages. É apenas uma característica
+da versão atual do jogo.
