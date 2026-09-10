@@ -38,7 +38,7 @@ const initialProgress: ProgressMap = {
   charge: 0,
   fabula: 0,
   lenda: 0,
-  estatuto: 25,
+  estatuto: 0,
   artigo: 50,
   carta: 25,
   miniconto: 75,
@@ -49,7 +49,7 @@ const initialMastery: MasteryMap = {
   charge: { recognize: false, explain: false, apply: false, produce: false },
   fabula: { recognize: false, explain: false, apply: false, produce: false },
   lenda: { recognize: false, explain: false, apply: false, produce: false },
-  estatuto: { recognize: true, explain: false, apply: false, produce: false },
+  estatuto: { recognize: false, explain: false, apply: false, produce: false },
   artigo: { recognize: true, explain: true, apply: false, produce: false },
   carta: { recognize: true, explain: false, apply: false, produce: false },
   miniconto: { recognize: true, explain: true, apply: true, produce: false },
@@ -141,29 +141,43 @@ resetDemo: () =>
     }),
     {
       name: "cidade-das-palavras-v9",
-      version: 10,
+      version: 11,
       migrate: (persistedState: unknown, version) => {
         const state = persistedState as Partial<GameState>;
+        const progress = {
+          ...initialProgress,
+          ...(state.progress ?? {})
+        };
+        const mastery = {
+          ...initialMastery,
+          ...(state.mastery ?? {})
+        };
 
+        // V10 introduced the real Lenda mission.
         if (version < 10) {
-          return {
-            ...state,
-            progress: {
-              ...initialProgress,
-              ...(state.progress ?? {}),
-              lenda: 0
-            },
-            mastery: {
-              ...initialMastery,
-              ...(state.mastery ?? {}),
-              lenda: initialMastery.lenda
-            },
-            recentlyRestored:
-              state.recentlyRestored === "lenda" ? null : (state.recentlyRestored ?? null)
-          } as GameState;
+          progress.lenda = 0;
+          mastery.lenda = initialMastery.lenda;
         }
 
-        return state as GameState;
+        // V11 introduces the real Estatuto mission.
+        // The old 25% was only placeholder/demo progress.
+        if (version < 11) {
+          progress.estatuto = 0;
+          mastery.estatuto = initialMastery.estatuto;
+        }
+
+        const clearRestored =
+          (version < 10 && state.recentlyRestored === "lenda") ||
+          (version < 11 && state.recentlyRestored === "estatuto");
+
+        return {
+          ...state,
+          progress,
+          mastery,
+          recentlyRestored: clearRestored
+            ? null
+            : (state.recentlyRestored ?? null)
+        } as GameState;
       }
     }
   )

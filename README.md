@@ -136,3 +136,18 @@ Terceiro distrito completo do jogo.
 - A Lenda começa em 0% e pode ser restaurada até 100%.
 - Migração de estado preserva progresso já conquistado em Charge e Fábula.
 - `src/vite-env.d.ts` já incluído para evitar o erro de módulos `.webp` no GitHub Actions.
+
+
+## V11 — Câmara da Cidade / Estatuto
+
+Quarto distrito completo do jogo.
+
+- Documento original: **Convivência na Cidade das Palavras**.
+- A classificação do gênero fica escondida inicialmente para que o estudante investigue a função antes de receber o nome.
+- Fluxo: Investigar → Classificar → Justificar → Contrastar → Aplicar → Produzir.
+- Contraste principal: **Estatuto × Regulamento × Artigo de opinião**.
+- O jogo explicita que artigos e incisos, sozinhos, não bastam para distinguir estatuto de regulamento.
+- Produção final inclui um construtor de norma e uma etapa de **edição real em campo de texto**.
+- Nova conquista: **Guardião da convivência**.
+- Estatuto começa em 0% e pode ser restaurado até 100%.
+- Migração V11 preserva o progresso real de Charge, Fábula e Lenda e remove apenas o antigo progresso-placeholder do Estatuto.

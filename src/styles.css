@@ -3398,3 +3398,778 @@ button:disabled { cursor: not-allowed; opacity: .5; }
     animation: none !important;
   }
 }
+
+
+
+/* ==========================================
+   ESTATUTO MISSION — V11
+========================================== */
+.statute-page {
+  width: min(1500px, calc(100% - 24px));
+  margin: 0 auto;
+  padding: 18px 0 30px;
+}
+.statute-header {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid rgba(103, 181, 255, .24);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 83% 0, rgba(75, 155, 224, .16), transparent 21rem),
+    linear-gradient(135deg, #123851, #10283d 55%, #0a1c2d);
+}
+.statute-header-title h1 {
+  margin: 4px 0 2px;
+  font-size: 34px;
+  line-height: 1.05;
+}
+.statute-header-title small {
+  color: #c9d9e5;
+  font-size: 13px;
+}
+.statute-progress {
+  min-width: 210px;
+  display: grid;
+  gap: 8px;
+}
+.statute-progress > span {
+  color: #d8ebff;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .07em;
+}
+.statute-progress > div {
+  display: flex;
+  gap: 8px;
+}
+.statute-progress i {
+  width: 28px;
+  height: 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.17);
+  background: rgba(255,255,255,.08);
+}
+.statute-progress i.done {
+  background: linear-gradient(90deg,#61adff,#f1ca61);
+  border-color: rgba(130, 195, 255, .58);
+}
+.statute-accessibility {
+  display: inline-grid;
+  grid-template-columns: 44px 58px 44px;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 9px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+}
+.statute-accessibility button {
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  border-radius: 11px;
+  background: #275b78;
+  color: #fff;
+  font-weight: 900;
+}
+.statute-accessibility output {
+  text-align: center;
+  color: #ffe6a0;
+  font-size: 12px;
+  font-weight: 900;
+}
+.statute-layout {
+  display: grid;
+  grid-template-columns: 300px minmax(0,1fr);
+  gap: 14px;
+  margin-top: 14px;
+}
+.statute-side {
+  min-width: 0;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+.statute-guide,
+.statute-stage-list,
+.statute-chamber-banner,
+.statute-document,
+.statute-task {
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 21px;
+  overflow: hidden;
+}
+.statute-guide {
+  background: #0d2a3d;
+}
+.statute-guide-image {
+  height: 315px;
+  position: relative;
+  overflow: hidden;
+}
+.statute-guide-image::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 82px;
+  background: linear-gradient(transparent,#0d2a3d);
+}
+.statute-guide-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 12%;
+}
+.statute-guide-copy {
+  padding: 15px 16px 17px;
+}
+.statute-guide-copy > span {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(97,173,255,.14);
+  color: #c8e5ff;
+  font-size: 11px;
+  font-weight: 900;
+}
+.statute-guide-copy p {
+  margin: 9px 0 0;
+  color: #e2eaf0;
+  font-size: 16px;
+  line-height: 1.55;
+}
+.statute-stage-list {
+  padding: 14px;
+  background: #0d2a3d;
+}
+.statute-stage-list > strong {
+  display: block;
+  margin-bottom: 9px;
+  color: #f3ce68;
+  font-size: 12px;
+  letter-spacing: .08em;
+}
+.statute-stage-list > div {
+  display: grid;
+  grid-template-columns: 36px minmax(0,1fr);
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 8px 9px;
+  border-radius: 13px;
+  color: #b0c0cb;
+}
+.statute-stage-list > div + div {
+  margin-top: 6px;
+}
+.statute-stage-list > div b {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,.1);
+  font-size: 13px;
+}
+.statute-stage-list > div span {
+  min-width: 0;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+.statute-stage-list > div.finished {
+  color: #d0e8f8;
+}
+.statute-stage-list > div.finished b {
+  color: #e7f5ff;
+  background: rgba(97,173,255,.18);
+}
+.statute-stage-list > div.current {
+  color: #17334a;
+  background: linear-gradient(135deg,#61adff,#f1ca61);
+}
+.statute-stage-list > div.current b {
+  color: #fff;
+  background: #285d7b;
+}
+.statute-main {
+  min-width: 0;
+  display: grid;
+  gap: 14px;
+}
+.statute-chamber-banner {
+  min-height: 235px;
+  position: relative;
+  color: #fff;
+  background: #11324a;
+}
+.statute-chamber-banner > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  filter: saturate(.9) brightness(.7);
+}
+.statute-chamber-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(8,34,51,.95), rgba(13,52,72,.64) 56%, rgba(9,39,57,.27)),
+    linear-gradient(0deg, rgba(6,24,35,.58), transparent 68%);
+}
+.statute-chamber-copy {
+  position: relative;
+  z-index: 3;
+  max-width: 690px;
+  padding: 34px 30px;
+}
+.statute-chamber-copy > span {
+  color: #f0d58a;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .1em;
+}
+.statute-chamber-copy h2 {
+  margin: 8px 0 9px;
+  font-size: 31px;
+  line-height: 1.08;
+}
+.statute-chamber-copy p {
+  margin: 0;
+  color: #e7f0f5;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.statute-seal {
+  position: absolute;
+  z-index: 4;
+  right: 6%;
+  top: 50%;
+  transform: translateY(-50%) rotate(-6deg);
+  width: 88px;
+  height: 88px;
+  display: grid;
+  place-items: center;
+  border: 4px double rgba(255,232,172,.85);
+  border-radius: 50%;
+  background: rgba(23,54,73,.84);
+  color: #ffe086;
+  font-family: Georgia, serif;
+  font-size: 45px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.28);
+}
+.statute-document {
+  padding: 18px;
+  background: #eee7d6;
+  color: #283039;
+}
+.statute-document > header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 14px;
+}
+.statute-document h2 {
+  margin: 4px 0 0;
+  color: #263645;
+  font-size: 27px;
+}
+.statute-document-chip {
+  padding: 8px 11px;
+  border: 1px solid #c7b98f;
+  border-radius: 999px;
+  background: #fffaf0;
+  color: #716143;
+  font-size: 11px;
+  font-weight: 900;
+}
+.statute-paper {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 38px 34px;
+  border: 2px solid #c2b38a;
+  border-radius: 15px;
+  background:
+    linear-gradient(rgba(255,255,255,.38), rgba(255,255,255,.06)),
+    #fbf5e6;
+  box-shadow: 0 16px 34px rgba(55,45,31,.12);
+}
+.statute-paper-heading {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  padding-bottom: 17px;
+  margin-bottom: 19px;
+  border-bottom: 2px solid #cfc09a;
+  text-align: center;
+}
+.statute-paper-heading span {
+  color: #765f35;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .1em;
+}
+.statute-paper-heading strong {
+  color: #283c4b;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+}
+.statute-paper article {
+  margin-top: 16px;
+}
+.statute-paper article > p {
+  margin: 0;
+  color: #343b3f;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  line-height: 1.65;
+}
+.statute-incisos {
+  margin: 9px 0 0 28px;
+}
+.statute-incisos p {
+  margin: 5px 0;
+  color: #444a4d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+.statute-task {
+  padding: 19px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(97,173,255,.09), transparent 18rem),
+    #0c2436;
+}
+.statute-task-heading {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,.09);
+}
+.statute-task-heading > span {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: linear-gradient(135deg,#61adff,#f1ca61);
+  color: #17334a;
+  font-size: 16px;
+  font-weight: 900;
+}
+.statute-task-heading h2 {
+  margin: 0;
+  font-size: 27px;
+}
+.statute-task-heading p {
+  margin: 6px 0 0;
+  color: #c5d2db;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.statute-observation-list,
+.statute-options,
+.statute-evidence,
+.statute-application-grid,
+.statute-builder {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+.statute-observation-list button,
+.statute-options button,
+.statute-application-grid button {
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 15px;
+  background: rgba(255,255,255,.045);
+  color: #f3f8fb;
+  padding: 14px 16px;
+}
+.statute-observation-list button strong {
+  display: block;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.statute-observation-list button span {
+  display: block;
+  margin-top: 6px;
+  color: #cad7df;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.statute-observation-list button.open {
+  border-color: rgba(97,173,255,.4);
+  background: rgba(97,173,255,.09);
+}
+.statute-insight,
+.statute-feedback,
+.statute-draft-helper,
+.statute-production-preview {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 15px;
+}
+.statute-insight {
+  border-left: 4px solid #f1ca61;
+  background: rgba(241,202,97,.08);
+}
+.statute-insight b,
+.statute-feedback b {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+.statute-insight p,
+.statute-feedback p {
+  margin: 0;
+  color: #dbe5eb;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.statute-feedback.success {
+  border: 1px solid rgba(97,173,255,.34);
+  background: rgba(97,173,255,.1);
+}
+.statute-feedback.warning {
+  border: 1px solid rgba(255,143,123,.3);
+  background: rgba(255,143,123,.08);
+}
+.statute-options button {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.48;
+}
+.statute-options button.correct,
+.statute-application-grid button.correct {
+  border-color: rgba(97,173,255,.42);
+  background: rgba(97,173,255,.11);
+}
+.statute-options button.wrong,
+.statute-application-grid button.wrong {
+  border-color: rgba(255,143,123,.36);
+  background: rgba(255,143,123,.09);
+}
+.statute-reveal {
+  display: grid;
+  gap: 4px;
+  margin-top: 14px;
+  padding: 15px;
+  border: 1px solid rgba(241,202,97,.34);
+  border-radius: 15px;
+  background: rgba(241,202,97,.09);
+}
+.statute-reveal span {
+  color: #f3d77f;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .1em;
+}
+.statute-reveal strong {
+  font-size: 21px;
+}
+.statute-evidence label {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 13px 14px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 14px;
+  background: rgba(255,255,255,.035);
+}
+.statute-evidence input {
+  width: 22px;
+  height: 22px;
+  margin: 1px 0 0;
+  flex: 0 0 auto;
+}
+.statute-evidence span {
+  color: #e1e9ee;
+  font-size: 16px;
+  line-height: 1.45;
+}
+.statute-contrast-cards {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+.statute-contrast-cards article {
+  padding: 15px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px;
+  background: rgba(255,255,255,.035);
+}
+.statute-contrast-cards article > span {
+  color: #f0d582;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+.statute-contrast-cards b {
+  display: block;
+  margin-top: 5px;
+  font-size: 17px;
+}
+.statute-contrast-cards p {
+  margin: 5px 0 0;
+  color: #c8d4dc;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.statute-application-grid {
+  grid-template-columns: repeat(3,1fr);
+}
+.statute-application-grid button > span {
+  display: block;
+  color: #f0d582;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+.statute-application-grid h3 {
+  margin: 6px 0;
+  font-size: 19px;
+}
+.statute-application-grid p {
+  margin: 0;
+  color: #ccd8df;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.statute-builder > div > b {
+  display: block;
+  color: #cce7ff;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.statute-builder > div > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.statute-builder button {
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 999px;
+  background: rgba(255,255,255,.045);
+  color: #f1f7fa;
+  padding: 11px 14px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.statute-builder button.selected {
+  border-color: rgba(241,202,97,.46);
+  background: rgba(241,202,97,.13);
+  color: #fff0b6;
+}
+.statute-draft-helper {
+  border: 1px solid rgba(97,173,255,.28);
+  background: rgba(97,173,255,.07);
+}
+.statute-draft-helper p {
+  margin: 8px 0 12px;
+  color: #e3ebf0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+.statute-editor {
+  margin-top: 15px;
+  padding: 15px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px;
+  background: rgba(255,255,255,.035);
+}
+.statute-editor label {
+  display: grid;
+  gap: 4px;
+}
+.statute-editor label b {
+  font-size: 16px;
+}
+.statute-editor label span {
+  color: #bfccd5;
+  font-size: 14px;
+}
+.statute-editor textarea {
+  width: 100%;
+  margin-top: 10px;
+  resize: vertical;
+  border: 1px solid rgba(112,185,244,.32);
+  border-radius: 12px;
+  background: #f7f0de;
+  color: #263641;
+  padding: 13px 14px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+.statute-checklist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.statute-checklist span {
+  padding: 7px 9px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 999px;
+  color: #899ba7;
+  font-size: 12px;
+}
+.statute-checklist span.ok {
+  border-color: rgba(113,221,153,.3);
+  background: rgba(113,221,153,.08);
+  color: #c9f5d9;
+}
+.statute-next {
+  width: 100%;
+  margin-top: 16px;
+}
+.statute-complete {
+  padding: 26px 16px;
+  text-align: center;
+  border: 1px solid rgba(97,173,255,.3);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 50% 0, rgba(241,202,97,.12), transparent 18rem),
+    rgba(97,173,255,.055);
+}
+.statute-complete-seal {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 12px;
+  display: grid;
+  place-items: center;
+  border: 4px double #ffe39a;
+  border-radius: 50%;
+  color: #ffe39a;
+  font-family: Georgia, serif;
+  font-size: 36px;
+}
+.statute-complete h2 {
+  margin: 0;
+  font-size: 29px;
+}
+.statute-complete p {
+  color: #d4dfe6;
+  font-size: 16px;
+}
+.statute-complete strong {
+  color: #ffe49b;
+  font-size: 14px;
+}
+.statute-final-article {
+  margin-top: 14px;
+  padding: 18px 20px;
+  border: 1px solid #c9b988;
+  border-radius: 15px;
+  background: #f8f0dc;
+  color: #2c353b;
+}
+.statute-final-article span {
+  color: #7c6339;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+.statute-final-article p {
+  margin: 8px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.statute-mastery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+.statute-mastery article {
+  padding: 14px;
+  border: 1px solid rgba(97,173,255,.2);
+  border-radius: 14px;
+  background: rgba(97,173,255,.06);
+}
+.statute-mastery b {
+  font-size: 16px;
+}
+.statute-mastery span {
+  float: right;
+  color: #cde8ff;
+  font-size: 15px;
+  font-weight: 900;
+}
+.statute-mastery p {
+  clear: both;
+  margin: 6px 0 0;
+  color: #c4d1da;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.statute-final-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
+@media (max-width: 1220px) {
+  .statute-header {
+    grid-template-columns: 1fr auto auto;
+  }
+  .statute-layout {
+    grid-template-columns: 260px minmax(0,1fr);
+  }
+}
+@media (max-width: 940px) {
+  .statute-header,
+  .statute-layout {
+    grid-template-columns: 1fr;
+  }
+  .statute-contrast-cards,
+  .statute-application-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 650px) {
+  .statute-page {
+    width: calc(100% - 14px);
+  }
+  .statute-header-title h1 {
+    font-size: 27px;
+  }
+  .statute-chamber-copy {
+    padding: 26px 20px;
+  }
+  .statute-chamber-copy h2 {
+    font-size: 25px;
+  }
+  .statute-seal {
+    display: none;
+  }
+  .statute-paper {
+    padding: 23px 20px 28px;
+  }
+  .statute-paper article > p {
+    font-size: 17px;
+  }
+  .statute-incisos {
+    margin-left: 12px;
+  }
+  .statute-mastery,
+  .statute-final-actions {
+    grid-template-columns: 1fr;
+  }
+}
