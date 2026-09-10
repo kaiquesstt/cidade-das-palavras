@@ -19,10 +19,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: cidade_das_palavras_react_v9_github_pages
-
     steps:
       - name: Baixar o repositório
         uses: actions/checkout@v4
@@ -47,7 +43,7 @@ jobs:
       - name: Enviar arquivos do site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./cidade_das_palavras_react_v9_github_pages/dist
+          path: ./dist
 
   deploy:
     environment:
