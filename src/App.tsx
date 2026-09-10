@@ -10,6 +10,7 @@ import { LegendMissionScreen } from "./screens/LegendMissionScreen";
 import { StatuteMissionScreen } from "./screens/StatuteMissionScreen";
 import { OpinionMissionScreen } from "./screens/OpinionMissionScreen";
 import { ReaderLetterMissionScreen } from "./screens/ReaderLetterMissionScreen";
+import { MinicontoMissionScreen } from "./screens/MinicontoMissionScreen";
 import { HomeScreen } from "./screens/HomeScreen";
 import { MapScreen } from "./screens/MapScreen";
 import { MissionBriefing } from "./screens/MissionBriefing";
@@ -46,6 +47,8 @@ function CurrentScreen() {
       return <OpinionMissionScreen />;
     case "readerLetterMission":
       return <ReaderLetterMissionScreen />;
+    case "minicontoMission":
+      return <MinicontoMissionScreen />;
     case "home":
     default:
       return <HomeScreen />;
@@ -82,7 +85,7 @@ export default function App() {
       <div className="app-view" key={activeView}>
         <CurrentScreen />
       </div>
-      {activeView !== "mission" && activeView !== "chargeMission" && activeView !== "fableMission" && activeView !== "legendMission" && activeView !== "statuteMission" && activeView !== "opinionMission" && activeView !== "readerLetterMission" && <BottomNav />}
+      {activeView !== "mission" && activeView !== "chargeMission" && activeView !== "fableMission" && activeView !== "legendMission" && activeView !== "statuteMission" && activeView !== "opinionMission" && activeView !== "readerLetterMission" && activeView !== "minicontoMission" && <BottomNav />}
     </div>
   );
 }

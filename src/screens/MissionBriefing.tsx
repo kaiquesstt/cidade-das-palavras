@@ -120,7 +120,17 @@ export function MissionBriefing() {
             </button>
           )}
 
-          {selected !== "charge" && selected !== "fabula" && selected !== "lenda" && selected !== "estatuto" && selected !== "artigo" && selected !== "carta" && (
+          {selected === "miniconto" && (
+            <button
+              type="button"
+              className="primary-action"
+              onClick={() => setActiveView("minicontoMission")}
+            >
+              Entrar na Estação Miniconto →
+            </button>
+          )}
+
+          {selected !== "charge" && selected !== "fabula" && selected !== "lenda" && selected !== "estatuto" && selected !== "artigo" && selected !== "carta" && selected !== "miniconto" && (
             <button
               type="button"
               className="secondary-action"
@@ -145,7 +155,9 @@ export function MissionBriefing() {
                       ? "A missão de Artigo de opinião está conectada."
                       : selected === "carta"
                         ? "A missão de Carta do leitor está conectada."
-                        : "Este distrito ainda está sendo preparado."}
+                        : selected === "miniconto"
+                          ? "A missão de Miniconto está conectada."
+                          : "Este distrito ainda está sendo preparado."}
           </b>
           <p>
             {selected === "fabula"
@@ -158,9 +170,11 @@ export function MissionBriefing() {
                     ? "A missão trabalha tema, tese, argumentos, evidências, contra-argumento, conclusão e contraste Artigo de opinião × Carta do leitor × Notícia."
                     : selected === "carta"
                       ? "A missão trabalha referência a uma publicação anterior, destinatário, posicionamento do leitor, argumentos, proposta e contraste Carta do leitor × Artigo de opinião × Carta pessoal."
-                      : selected === "charge"
+                      : selected === "miniconto"
+                        ? "A missão trabalha concisão, movimento narrativo, recorte de cena, lacunas para inferência, efeito final e contraste Miniconto × Frase de efeito × Resumo."
+                        : selected === "charge"
                   ? "A experiência percorre observação, classificação, justificativa, contraste, aplicação e produção."
-                  : "Os próximos distritos usarão o mesmo modelo de aprendizagem já validado em Charge, Fábula, Lenda, Estatuto, Artigo de opinião e Carta do leitor."}
+                  : "Os próximos distritos usarão o mesmo modelo de aprendizagem já validado em Charge, Fábula, Lenda, Estatuto, Artigo de opinião, Carta do leitor e Miniconto."}
           </p>
         </div>
       </section>

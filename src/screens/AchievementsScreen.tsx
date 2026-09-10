@@ -11,6 +11,7 @@ const badges = [
   { name: "Guardião da convivência", desc: "Restaurou a Câmara da Cidade compreendendo como normas organizam direitos, deveres e responsabilidades.", icon: "§" },
   { name: "Voz argumentativa", desc: "Restaurou a Redação Central defendendo uma tese com argumentos, evidências e resposta a objeções.", icon: "✦" },
   { name: "Voz do leitor", desc: "Restaurou a Central do Leitor dialogando com uma publicação de forma pública, argumentada e respeitosa.", icon: "✉" },
+  { name: "Mestre da entrelinha", desc: "Restaurou a Estação Miniconto produzindo narrativa concisa, com movimento e espaço para inferência.", icon: "▣" },
   { name: "Mestre dos contrastes", desc: "Diferencie conceitos próximos sem depender de memorização.", icon: "⚖" },
   { name: "Autor da cidade", desc: "Complete uma produção própria.", icon: "✎" },
   { name: "Cidade restaurada", desc: "Alcance 100% em todos os bairros.", icon: "★" }

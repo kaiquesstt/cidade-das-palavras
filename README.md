@@ -182,3 +182,20 @@ Sexto distrito completo do jogo.
 - Nova conquista: **Voz do leitor**.
 - Carta do leitor começa em 0% e pode chegar a 100%.
 - Migração V13 preserva o progresso real dos cinco distritos anteriores e remove apenas o antigo progresso demonstrativo da Carta.
+
+
+## V14 — Estação Miniconto
+
+Sétimo distrito completo do jogo.
+
+- Miniconto original: **“De volta”**.
+- Nova mecânica inicial: **camadas do texto**, trabalhando recorte, movimento narrativo, lacuna e efeito final.
+- Inclui um **teste de inferência** para diferenciar leitura sustentada de invenção sem pistas.
+- Fluxo: Investigar → Classificar → Justificar → Contrastar → Aplicar → Produzir.
+- Contraste principal: **Miniconto × Frase de efeito × Resumo**.
+- A missão reforça que brevidade, sozinha, não define o gênero e que reviravolta não é requisito obrigatório.
+- Produção final: **Oficina de corte**, com objeto, lugar, mudança, editor autoral e contador de palavras.
+- O limite de 50 palavras é apresentado explicitamente como regra didática da oficina, e não como definição universal do gênero.
+- Nova conquista: **Mestre da entrelinha**.
+- Miniconto começa em 0% e pode chegar a 100%.
+- Migração V14 preserva o progresso real dos seis distritos anteriores e remove apenas o antigo progresso demonstrativo do Miniconto.

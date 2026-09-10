@@ -41,7 +41,7 @@ const initialProgress: ProgressMap = {
   estatuto: 0,
   artigo: 0,
   carta: 0,
-  miniconto: 75,
+  miniconto: 0,
   figuras: 50
 };
 
@@ -52,7 +52,7 @@ const initialMastery: MasteryMap = {
   estatuto: { recognize: false, explain: false, apply: false, produce: false },
   artigo: { recognize: false, explain: false, apply: false, produce: false },
   carta: { recognize: false, explain: false, apply: false, produce: false },
-  miniconto: { recognize: true, explain: true, apply: true, produce: false },
+  miniconto: { recognize: false, explain: false, apply: false, produce: false },
   figuras: { recognize: true, explain: true, apply: false, produce: false }
 };
 
@@ -141,7 +141,7 @@ resetDemo: () =>
     }),
     {
       name: "cidade-das-palavras-v9",
-      version: 13,
+      version: 14,
       migrate: (persistedState: unknown, version) => {
         const state = persistedState as Partial<GameState>;
         const progress = {
@@ -168,18 +168,24 @@ resetDemo: () =>
           mastery.artigo = initialMastery.artigo;
         }
 
-        // V13 introduz a missão real de Carta do Leitor.
-        // O antigo 25% era apenas progresso demonstrativo.
         if (version < 13) {
           progress.carta = 0;
           mastery.carta = initialMastery.carta;
+        }
+
+        // V14 introduz a missão real de Miniconto.
+        // O antigo 75% era apenas progresso demonstrativo.
+        if (version < 14) {
+          progress.miniconto = 0;
+          mastery.miniconto = initialMastery.miniconto;
         }
 
         const clearRestored =
           (version < 10 && state.recentlyRestored === "lenda") ||
           (version < 11 && state.recentlyRestored === "estatuto") ||
           (version < 12 && state.recentlyRestored === "artigo") ||
-          (version < 13 && state.recentlyRestored === "carta");
+          (version < 13 && state.recentlyRestored === "carta") ||
+          (version < 14 && state.recentlyRestored === "miniconto");
 
         return {
           ...state,
