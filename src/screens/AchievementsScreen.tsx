@@ -9,6 +9,7 @@ const badges = [
   { name: "Leitor de entrelinhas", desc: "Concluiu a Floresta das Fábulas inferindo moral, justificando o gênero e produzindo uma nova fábula.", icon: "◆" },
   { name: "Guardião da memória", desc: "Restaurou a Vila das Lendas compreendendo tradição, memória coletiva e transmissão cultural.", icon: "☾" },
   { name: "Guardião da convivência", desc: "Restaurou a Câmara da Cidade compreendendo como normas organizam direitos, deveres e responsabilidades.", icon: "§" },
+  { name: "Voz argumentativa", desc: "Restaurou a Redação Central defendendo uma tese com argumentos, evidências e resposta a objeções.", icon: "✦" },
   { name: "Mestre dos contrastes", desc: "Diferencie conceitos próximos sem depender de memorização.", icon: "⚖" },
   { name: "Autor da cidade", desc: "Complete uma produção própria.", icon: "✎" },
   { name: "Cidade restaurada", desc: "Alcance 100% em todos os bairros.", icon: "★" }

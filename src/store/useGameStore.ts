@@ -39,7 +39,7 @@ const initialProgress: ProgressMap = {
   fabula: 0,
   lenda: 0,
   estatuto: 0,
-  artigo: 50,
+  artigo: 0,
   carta: 25,
   miniconto: 75,
   figuras: 50
@@ -50,7 +50,7 @@ const initialMastery: MasteryMap = {
   fabula: { recognize: false, explain: false, apply: false, produce: false },
   lenda: { recognize: false, explain: false, apply: false, produce: false },
   estatuto: { recognize: false, explain: false, apply: false, produce: false },
-  artigo: { recognize: true, explain: true, apply: false, produce: false },
+  artigo: { recognize: false, explain: false, apply: false, produce: false },
   carta: { recognize: true, explain: false, apply: false, produce: false },
   miniconto: { recognize: true, explain: true, apply: true, produce: false },
   figuras: { recognize: true, explain: true, apply: false, produce: false }
@@ -141,7 +141,7 @@ resetDemo: () =>
     }),
     {
       name: "cidade-das-palavras-v9",
-      version: 11,
+      version: 12,
       migrate: (persistedState: unknown, version) => {
         const state = persistedState as Partial<GameState>;
         const progress = {
@@ -153,22 +153,27 @@ resetDemo: () =>
           ...(state.mastery ?? {})
         };
 
-        // V10 introduced the real Lenda mission.
         if (version < 10) {
           progress.lenda = 0;
           mastery.lenda = initialMastery.lenda;
         }
 
-        // V11 introduces the real Estatuto mission.
-        // The old 25% was only placeholder/demo progress.
         if (version < 11) {
           progress.estatuto = 0;
           mastery.estatuto = initialMastery.estatuto;
         }
 
+        // V12 introduz a missão real de Artigo de Opinião.
+        // O antigo 50% era apenas progresso demonstrativo.
+        if (version < 12) {
+          progress.artigo = 0;
+          mastery.artigo = initialMastery.artigo;
+        }
+
         const clearRestored =
           (version < 10 && state.recentlyRestored === "lenda") ||
-          (version < 11 && state.recentlyRestored === "estatuto");
+          (version < 11 && state.recentlyRestored === "estatuto") ||
+          (version < 12 && state.recentlyRestored === "artigo");
 
         return {
           ...state,

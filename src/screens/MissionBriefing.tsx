@@ -100,7 +100,17 @@ export function MissionBriefing() {
             </button>
           )}
 
-          {selected !== "charge" && selected !== "fabula" && selected !== "lenda" && selected !== "estatuto" && (
+          {selected === "artigo" && (
+            <button
+              type="button"
+              className="primary-action"
+              onClick={() => setActiveView("opinionMission")}
+            >
+              Entrar na Redação Central →
+            </button>
+          )}
+
+          {selected !== "charge" && selected !== "fabula" && selected !== "lenda" && selected !== "estatuto" && selected !== "artigo" && (
             <button
               type="button"
               className="secondary-action"
@@ -121,7 +131,9 @@ export function MissionBriefing() {
                   ? "A missão de Lenda está conectada."
                   : selected === "estatuto"
                     ? "A missão de Estatuto está conectada."
-                    : "Este distrito ainda está sendo preparado."}
+                    : selected === "artigo"
+                      ? "A missão de Artigo de opinião está conectada."
+                      : "Este distrito ainda está sendo preparado."}
           </b>
           <p>
             {selected === "fabula"
@@ -130,9 +142,11 @@ export function MissionBriefing() {
                 ? "A missão trabalha tradição, memória coletiva, relação com o lugar, elemento extraordinário, contraste Lenda × Fábula × Conto fantástico, aplicação e produção."
                 : selected === "estatuto"
                   ? "A missão trabalha finalidade normativa, direitos, deveres, proibições, organização em artigos, contraste Estatuto × Regulamento × Artigo de opinião, aplicação e produção de um novo artigo."
-                  : selected === "charge"
+                  : selected === "artigo"
+                    ? "A missão trabalha tema, tese, argumentos, evidências, contra-argumento, conclusão e contraste Artigo de opinião × Carta do leitor × Notícia."
+                    : selected === "charge"
                   ? "A experiência percorre observação, classificação, justificativa, contraste, aplicação e produção."
-                  : "Os próximos distritos usarão o mesmo modelo de aprendizagem já validado em Charge, Fábula, Lenda e Estatuto."}
+                  : "Os próximos distritos usarão o mesmo modelo de aprendizagem já validado em Charge, Fábula, Lenda, Estatuto e Artigo de opinião."}
           </p>
         </div>
       </section>

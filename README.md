@@ -151,3 +151,19 @@ Quarto distrito completo do jogo.
 - Nova conquista: **Guardião da convivência**.
 - Estatuto começa em 0% e pode ser restaurado até 100%.
 - Migração V11 preserva o progresso real de Charge, Fábula e Lenda e remove apenas o antigo progresso-placeholder do Estatuto.
+
+
+## V12 — Redação Central / Artigo de opinião
+
+Quinto distrito completo do jogo.
+
+- Artigo original: **“Mais tempo para ler”**.
+- Tema: ampliação do horário da Biblioteca Central.
+- A consulta estatística do texto é explicitamente identificada como **dado simulado**, evitando apresentá-la como informação factual.
+- Nova mecânica inicial: **Lentes da argumentação** para localizar tema, tese, argumento, evidência, contra-argumento e conclusão.
+- Fluxo: Investigar → Classificar → Justificar → Contrastar → Aplicar → Produzir.
+- Contraste principal: **Artigo de opinião × Carta do leitor × Notícia**.
+- Produção final permite escolher posição favorável ou contrária, selecionar dois argumentos, analisar uma objeção/resposta e escrever uma conclusão própria.
+- Nova conquista: **Voz argumentativa**.
+- Artigo de opinião começa em 0% e pode chegar a 100%.
+- Migração V12 preserva o progresso real dos quatro distritos anteriores e remove apenas o antigo progresso demonstrativo do Artigo.
